@@ -1,8 +1,5 @@
 # SQL Sorcer
 
-![GitHub](https://img.shields.io/github/license/ftchvs/sql-sorcer)
-![Node.js Version](https://img.shields.io/badge/node-%3E%3D12.0.0-brightgreen)
-
 SQL Sorcer is an innovative web application that harnesses the power of AI to bridge the gap between natural language and SQL queries. By leveraging advanced language models from OpenAI and Anthropic, SQL Sorcer empowers users to generate accurate SQL statements from plain English descriptions, making database interactions more intuitive and accessible.
 
 ## 🚀 Features
