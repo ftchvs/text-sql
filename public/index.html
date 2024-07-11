@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Sorcer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Sorcer</h1>
+        <form id="sqlForm">
+            <!-- API Selection and Key Input -->
+            <div class="api-section">
+                <div>
+                    <label for="apiType">API Type:</label>
+                    <select id="apiType" required>
+                        <option value="openai">OpenAI</option>
+                        <option value="claude">Claude</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="apiKey">API Key:</label>
+                    <input type="password" id="apiKey" required placeholder="Enter your API key">
+                </div>
+            </div>
+
+            <!-- Model Selection and Max Tokens -->
+            <div class="model-section">
+                <div>
+                    <label for="modelType">Model:</label>
+                    <select id="modelType" required>
+                        <!-- Options will be dynamically populated based on API type -->
+                    </select>
+                </div>
+                <div>
+                    <label for="maxTokens">Max Tokens:</label>
+                    <input type="number" id="maxTokens" min="1" max="8000" value="1000">
+                </div>
+            </div>
+
+            <!-- Database Information section -->
+            <div id="database-info">
+                <h2>Database Information</h2>
+                <div id="tables-container"></div>
+                <button type="button" id="add-table">Add Table</button>
+            </div>
+
+            <!-- Text Query input -->
+            <div>
+                <label for="textQuery">Text Query:</label>
+                <textarea id="textQuery" required></textarea>
+            </div>
+
+            <button type="submit">Convert to SQL</button>
+        </form>
+        <div id="result"></div>
+
+        <!-- Data type information -->
+        <div id="data-type-info" style="display: none;">
+            <h3>Data Type Examples:</h3>
+            <ul>
+                <li><strong>INT:</strong> Whole numbers, e.g., 1, 100, -5</li>
+                <li><strong>VARCHAR:</strong> Variable-length string, e.g., 'Hello', 'John Doe'</li>
+                <li><strong>DATE:</strong> Date values, e.g., '2023-07-10'</li>
+                <li><strong>BOOLEAN:</strong> True/False values</li>
+                <li><strong>FLOAT:</strong> Decimal numbers, e.g., 3.14, -0.001</li>
+                <li><strong>DECIMAL:</strong> Precise decimal numbers, e.g., for currency</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Template for table input -->
+    <template id="table-template">
+        <div class="table-info">
+            <input type="text" class="table-name" placeholder="Table Name" required>
+            <div class="columns-container"></div>
+            <button type="button" class="add-column">Add Column</button>
+            <button type="button" class="remove-table">Remove Table</button>
+        </div>
+    </template>
+
+    <!-- Template for column input -->
+    <template id="column-template">
+        <div class="column-info">
+            <input type="text" class="column-name" placeholder="Column Name" required>
+            <div class="select-wrapper">
+                <select class="column-type" required>
+                    <option value="">Select Data Type</option>
+                    <option value="INT">INT</option>
+                    <option value="VARCHAR">VARCHAR</option>
+                    <option value="DATE">DATE</option>
+                    <option value="BOOLEAN">BOOLEAN</option>
+                    <option value="FLOAT">FLOAT</option>
+                    <option value="DECIMAL">DECIMAL</option>
+                </select>
+            </div>
+            <button type="button" class="remove-column">Remove</button>
+        </div>
+        <div class="data-type-example"></div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
