@@ -33,7 +33,7 @@ Click the image above to watch a video demo of text-sql in action.
 
 ## 🖼️ Screenshot
 
-![Screenshot](public/view/screenshot.png)
+![Screenshot](public/view/Screenshot 2024-07-10 at 10.27.00 PM.png)
 
 ## 🛠️ Installation
 
