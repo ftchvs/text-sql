@@ -25,12 +25,6 @@ Welcome to **text-sql**! This tool helps you convert natural language text into 
 - 🧪 **Prototyping**: Rapidly prototype database queries for application development.
 - 🔍 **Database Exploration**: Easily explore and understand new or complex database schemas.
 
-## 📽️ Demo
-
-[![Video Demo](public/view/REC-20240710222331.mp4)](public/view/REC-20240710222331.mp4)
-
-Click the image above to watch a video demo of text-sql in action.
-
 ## 🖼️ Screenshot
 
 ![Screenshot](public/view/Screenshot 2024-07-10 at 10.27.00 PM.png)
