@@ -39,6 +39,12 @@
                 </div>
             </div>
 
+            <!-- JSON Schema Upload -->
+            <div>
+                <label for="schemaUpload">Upload JSON Schema:</label>
+                <input type="file" id="schemaUpload" accept=".json">
+            </div>
+
             <!-- Database Information section -->
             <div id="database-info">
                 <h2>Database Information</h2>
@@ -57,49 +63,127 @@
         <div id="result"></div>
 
         <!-- Data type information -->
-        <div id="data-type-info" style="display: none;">
+        <div id="data-type-info">
             <h3>Data Type Examples:</h3>
             <ul>
-                <li><strong>INT:</strong> Whole numbers, e.g., 1, 100, -5</li>
-                <li><strong>VARCHAR:</strong> Variable-length string, e.g., 'Hello', 'John Doe'</li>
-                <li><strong>DATE:</strong> Date values, e.g., '2023-07-10'</li>
-                <li><strong>BOOLEAN:</strong> True/False values</li>
-                <li><strong>FLOAT:</strong> Decimal numbers, e.g., 3.14, -0.001</li>
-                <li><strong>DECIMAL:</strong> Precise decimal numbers, e.g., for currency</li>
+                <!-- Numeric Data Types -->
+                <li><strong>BIT:</strong> Binary values (MySQL, SQL Server)</li>
+                <li><strong>TINYINT:</strong> Very small range of whole numbers</li>
+                <li><strong>SMALLINT:</strong> Small range of whole numbers</li>
+                <li><strong>MEDIUMINT:</strong> Medium range of whole numbers (MySQL)</li>
+                <li><strong>INT / INTEGER:</strong> Whole numbers</li>
+                <li><strong>BIGINT:</strong> Large range of whole numbers</li>
+                <li><strong>SERIAL:</strong> Auto-incrementing integer (PostgreSQL)</li>
+                <li><strong>SMALLSERIAL:</strong> Auto-incrementing small integer (PostgreSQL)</li>
+                <li><strong>BIGSERIAL:</strong> Auto-incrementing large integer (PostgreSQL)</li>
+                <li><strong>DECIMAL / NUMERIC:</strong> Exact numeric values with fixed precision and scale</li>
+                <li><strong>FLOAT:</strong> Single precision floating-point numbers</li>
+                <li><strong>DOUBLE:</strong> Double precision floating-point numbers</li>
+                <li><strong>REAL:</strong> Single precision floating-point numbers (ANSI SQL, PostgreSQL)</li>
+                <li><strong>MONEY:</strong> Currency values (SQL Server)</li>
+                <li><strong>SMALLMONEY:</strong> Smaller range of currency values (SQL Server)</li>
+
+                <!-- String Data Types -->
+                <li><strong>CHAR(n):</strong> Fixed-length character string</li>
+                <li><strong>VARCHAR(n):</strong> Variable-length character string</li>
+                <li><strong>TINYTEXT:</strong> Very small text (MySQL)</li>
+                <li><strong>TEXT:</strong> Large variable-length text</li>
+                <li><strong>MEDIUMTEXT:</strong> Medium variable-length text (MySQL)</li>
+                <li><strong>LONGTEXT:</strong> Large variable-length text (MySQL)</li>
+                <li><strong>NCHAR(n):</strong> Fixed-length Unicode character string</li>
+                <li><strong>NVARCHAR(n):</strong> Variable-length Unicode character string</li>
+                <li><strong>NTEXT:</strong> Large variable-length Unicode text (SQL Server, deprecated)</li>
+                <li><strong>LONGVARCHAR:</strong> Large variable-length string (ANSI SQL)</li>
+                <li><strong>ENUM:</strong> Enumeration, a string object with a predefined set of values (MySQL)</li>
+                <li><strong>SET:</strong> String object that can have zero or more values, chosen from a list of allowed values (MySQL)</li>
+
+                <!-- Binary Data Types -->
+                <li><strong>BINARY(n):</strong> Fixed-length binary data</li>
+                <li><strong>VARBINARY(n):</strong> Variable-length binary data</li>
+                <li><strong>TINYBLOB:</strong> Very small binary large object (MySQL)</li>
+                <li><strong>BLOB:</strong> Binary large object</li>
+                <li><strong>MEDIUMBLOB:</strong> Medium binary large object (MySQL)</li>
+                <li><strong>LONGBLOB:</strong> Large binary large object (MySQL)</li>
+                <li><strong>IMAGE:</strong> Used for storing images (SQL Server, deprecated)</li>
+                <li><strong>RAW:</strong> Variable-length binary data (Oracle)</li>
+                <li><strong>UROWID:</strong> Universal row identifier (Oracle)</li>
+                <li><strong>ROWVERSION:</strong> Automatically generated unique binary numbers for version-stamping table rows (SQL Server)</li>
+
+                <!-- Date and Time Data Types -->
+                <li><strong>DATE:</strong> Date values</li>
+                <li><strong>TIME:</strong> Time values</li>
+                <li><strong>DATETIME:</strong> Combined date and time values</li>
+                <li><strong>TIMESTAMP:</strong> Date and time values with time zone information</li>
+                <li><strong>SMALLDATETIME:</strong> Lower precision date and time values (SQL Server)</li>
+                <li><strong>YEAR:</strong> Year values</li>
+                <li><strong>INTERVAL:</strong> Time intervals (PostgreSQL, Oracle)</li>
+                <li><strong>TIMESTAMP WITH TIME ZONE:</strong> Date and time values with time zone information (PostgreSQL, Oracle)</li>
+                <li><strong>TIMESTAMP WITHOUT TIME ZONE:</strong> Date and time values without time zone information (PostgreSQL, Oracle)</li>
+
+                <!-- Boolean Data Types -->
+                <li><strong>BOOLEAN / BOOL:</strong> True/False values</li>
+                <li><strong>BIT:</strong> A single bit (MySQL, SQL Server)</li>
+
+                <!-- Spatial Data Types -->
+                <li><strong>GEOMETRY:</strong> Spatial data types for geometric data</li>
+                <li><strong>POINT:</strong> A point in a 2D space</li>
+                <li><strong>LINESTRING:</strong> A sequence of points forming a line</li>
+                <li><strong>POLYGON:</strong> A sequence of points forming a polygon</li>
+                <li><strong>GEOGRAPHY:</strong> Spatial data for geographic objects (PostgreSQL, SQL Server)</li>
+
+                <!-- Network Address Data Types (PostgreSQL) -->
+                <li><strong>CIDR:</strong> IPv4 or IPv6 network</li>
+                <li><strong>INET:</strong> IPv4 or IPv6 address</li>
+                <li><strong>MACADDR:</strong> MAC address</li>
+
+                <!-- JSON and XML Data Types -->
+                <li><strong>JSON:</strong> JSON formatted text</li>
+                <li><strong>JSONB:</strong> Binary JSON format (PostgreSQL)</li>
+                <li><strong>XML:</strong> XML formatted text</li>
+                <li><strong>XMLTYPE:</strong> XML data (Oracle)</li>
+
+                <!-- Specialized Data Types -->
+                <li><strong>UUID:</strong> Universally Unique Identifier</li>
+                <li><strong>TSVECTOR:</strong> Full-text search vector (PostgreSQL)</li>
+                <li><strong>TSQUERY:</strong> Full-text search query (PostgreSQL)</li>
+                <li><strong>HSTORE:</strong> Key-value pairs (PostgreSQL)</li>
+                <li><strong>SXML:</strong> Secure XML data type (DB2)</li>
+                <li><strong>ROWID:</strong> Unique identifier for rows in a table (Oracle)</li>
+                <li><strong>HIERARCHYID:</strong> Represents position in a hierarchy (SQL Server)</li>
+                <li><strong>ARRAY:</strong> Array of values (PostgreSQL)</li>
+                <li><strong>BIT VARYING:</strong> Variable-length bit string (PostgreSQL)</li>
+
+                <!-- Legacy Data Types (Less commonly used) -->
+                <li><strong>IMAGE:</strong> Used for storing images (SQL Server, deprecated)</li>
+                <li><strong>TEXT:</strong> Non-Unicode large text (SQL Server, deprecated)</li>
             </ul>
         </div>
-    </div>
 
-    <!-- Template for table input -->
-    <template id="table-template">
-        <div class="table-info">
-            <input type="text" class="table-name" placeholder="Table Name" required>
-            <div class="columns-container"></div>
-            <button type="button" class="add-column">Add Column</button>
-            <button type="button" class="remove-table">Remove Table</button>
-        </div>
-    </template>
-
-    <!-- Template for column input -->
-    <template id="column-template">
-        <div class="column-info">
-            <input type="text" class="column-name" placeholder="Column Name" required>
-            <div class="select-wrapper">
-                <select class="column-type" required>
-                    <option value="">Select Data Type</option>
-                    <option value="INT">INT</option>
-                    <option value="VARCHAR">VARCHAR</option>
-                    <option value="DATE">DATE</option>
-                    <option value="BOOLEAN">BOOLEAN</option>
-                    <option value="FLOAT">FLOAT</option>
-                    <option value="DECIMAL">DECIMAL</option>
-                </select>
+        <!-- Template for table input -->
+        <template id="table-template">
+            <div class="table-info">
+                <input type="text" class="table-name" placeholder="Table Name" required>
+                <div class="columns-container"></div>
+                <button type="button" class="add-column">Add Column</button>
+                <button type="button" class="remove-table">Remove Table</button>
             </div>
-            <button type="button" class="remove-column">Remove</button>
-        </div>
-        <div class="data-type-example"></div>
-    </template>
+        </template>
 
-    <script src="script.js"></script>
+        <!-- Template for column input -->
+        <template id="column-template">
+            <div class="column-info">
+                <input type="text" class="column-name" placeholder="Column Name" required>
+                <div class="select-wrapper">
+                    <select class="column-type" required>
+                        <option value="">Select Data Type</option>
+                    </select>
+                </div>
+                <button type="button" class="remove-column">Remove</button>
+            </div>
+            <div class="data-type-example"></div>
+        </template>
+
+        <script src="script.js"></script>
+    </div>
 </body>
 </html>

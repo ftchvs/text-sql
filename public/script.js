@@ -4,6 +4,44 @@ const modelOptions = {
     claude: ['claude-2.1', 'claude-instant-1']
 };
 
+// SQL Data Types
+const sqlDataTypes = [
+    // Numeric Data Types
+    'BIT', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'INT', 'INTEGER', 'BIGINT', 'SERIAL', 
+    'SMALLSERIAL', 'BIGSERIAL', 'DECIMAL', 'NUMERIC', 'FLOAT', 'DOUBLE', 'REAL', 
+    'MONEY', 'SMALLMONEY',
+
+    // String Data Types
+    'CHAR', 'VARCHAR', 'TINYTEXT', 'TEXT', 'MEDIUMTEXT', 'LONGTEXT', 'NCHAR', 
+    'NVARCHAR', 'NTEXT', 'LONGVARCHAR', 'ENUM', 'SET',
+
+    // Binary Data Types
+    'BINARY', 'VARBINARY', 'TINYBLOB', 'BLOB', 'MEDIUMBLOB', 'LONGBLOB', 'IMAGE', 
+    'RAW', 'UROWID', 'ROWVERSION',
+
+    // Date and Time Data Types
+    'DATE', 'TIME', 'DATETIME', 'TIMESTAMP', 'SMALLDATETIME', 'YEAR', 'INTERVAL', 
+    'TIMESTAMP WITH TIME ZONE', 'TIMESTAMP WITHOUT TIME ZONE',
+
+    // Boolean Data Types
+    'BOOLEAN', 'BOOL', 'BIT',
+
+    // Spatial Data Types
+    'GEOMETRY', 'POINT', 'LINESTRING', 'POLYGON', 'GEOGRAPHY',
+
+    // Network Address Data Types
+    'CIDR', 'INET', 'MACADDR',
+
+    // JSON and XML Data Types
+    'JSON', 'JSONB', 'XML', 'XMLTYPE',
+
+    // Specialized Data Types
+    'UUID', 'TSVECTOR', 'TSQUERY', 'HSTORE', 'SXML', 'ROWID', 'HIERARCHYID', 'ARRAY', 'BIT VARYING',
+
+    // Legacy Data Types
+    'IMAGE', 'TEXT'
+];
+
 // Function to update model options based on selected API
 function updateModelOptions() {
     const apiType = document.getElementById('apiType').value;
@@ -14,6 +52,16 @@ function updateModelOptions() {
         option.value = model;
         option.textContent = model;
         modelSelect.appendChild(option);
+    });
+}
+
+// Function to update SQL data types in dropdown
+function updateSQLDataTypes(selectElement) {
+    sqlDataTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        selectElement.appendChild(option);
     });
 }
 
@@ -40,6 +88,7 @@ function addColumn(event) {
     
     columnElement.querySelector('.remove-column').addEventListener('click', removeColumn);
     columnElement.querySelector('.column-type').addEventListener('change', showDataTypeExample);
+    updateSQLDataTypes(columnElement.querySelector('.column-type'));
     
     columnsContainer.appendChild(columnElement);
 }
@@ -61,12 +110,79 @@ function showDataTypeExample(event) {
     const exampleDiv = select.closest('.column-info').nextElementSibling;
     
     const dataTypeInfo = {
-        'INT': 'Whole numbers, e.g., 1, 100, -5',
-        'VARCHAR': 'Variable-length string, e.g., \'Hello\', \'John Doe\'',
-        'DATE': 'Date values, e.g., \'2023-07-10\'',
+        'BIT': 'Binary values (MySQL, SQL Server)',
+        'TINYINT': 'Very small range of whole numbers',
+        'SMALLINT': 'Small range of whole numbers',
+        'MEDIUMINT': 'Medium range of whole numbers (MySQL)',
+        'INT': 'Whole numbers',
+        'INTEGER': 'Whole numbers',
+        'BIGINT': 'Large range of whole numbers',
+        'SERIAL': 'Auto-incrementing integer (PostgreSQL)',
+        'SMALLSERIAL': 'Auto-incrementing small integer (PostgreSQL)',
+        'BIGSERIAL': 'Auto-incrementing large integer (PostgreSQL)',
+        'DECIMAL': 'Exact numeric values with fixed precision and scale',
+        'NUMERIC': 'Exact numeric values with fixed precision and scale',
+        'FLOAT': 'Single precision floating-point numbers',
+        'DOUBLE': 'Double precision floating-point numbers',
+        'REAL': 'Single precision floating-point numbers (ANSI SQL, PostgreSQL)',
+        'MONEY': 'Currency values (SQL Server)',
+        'SMALLMONEY': 'Smaller range of currency values (SQL Server)',
+        'CHAR': 'Fixed-length character string',
+        'VARCHAR': 'Variable-length character string',
+        'TINYTEXT': 'Very small text (MySQL)',
+        'TEXT': 'Large variable-length text',
+        'MEDIUMTEXT': 'Medium variable-length text (MySQL)',
+        'LONGTEXT': 'Large variable-length text (MySQL)',
+        'NCHAR': 'Fixed-length Unicode character string',
+        'NVARCHAR': 'Variable-length Unicode character string',
+        'NTEXT': 'Large variable-length Unicode text (SQL Server, deprecated)',
+        'LONGVARCHAR': 'Large variable-length string (ANSI SQL)',
+        'ENUM': 'Enumeration, a string object with a predefined set of values (MySQL)',
+        'SET': 'String object that can have zero or more values, chosen from a list of allowed values (MySQL)',
+        'BINARY': 'Fixed-length binary data',
+        'VARBINARY': 'Variable-length binary data',
+        'TINYBLOB': 'Very small binary large object (MySQL)',
+        'BLOB': 'Binary large object',
+        'MEDIUMBLOB': 'Medium binary large object (MySQL)',
+        'LONGBLOB': 'Large binary large object (MySQL)',
+        'IMAGE': 'Used for storing images (SQL Server, deprecated)',
+        'RAW': 'Variable-length binary data (Oracle)',
+        'UROWID': 'Universal row identifier (Oracle)',
+        'ROWVERSION': 'Automatically generated unique binary numbers for version-stamping table rows (SQL Server)',
+        'DATE': 'Date values',
+        'TIME': 'Time values',
+        'DATETIME': 'Combined date and time values',
+        'TIMESTAMP': 'Date and time values with time zone information',
+        'SMALLDATETIME': 'Lower precision date and time values (SQL Server)',
+        'YEAR': 'Year values',
+        'INTERVAL': 'Time intervals (PostgreSQL, Oracle)',
+        'TIMESTAMP WITH TIME ZONE': 'Date and time values with time zone information (PostgreSQL, Oracle)',
+        'TIMESTAMP WITHOUT TIME ZONE': 'Date and time values without time zone information (PostgreSQL, Oracle)',
         'BOOLEAN': 'True/False values',
-        'FLOAT': 'Decimal numbers, e.g., 3.14, -0.001',
-        'DECIMAL': 'Precise decimal numbers, e.g., for currency'
+        'BOOL': 'True/False values',
+        'GEOMETRY': 'Spatial data types for geometric data',
+        'POINT': 'A point in a 2D space',
+        'LINESTRING': 'A sequence of points forming a line',
+        'POLYGON': 'A sequence of points forming a polygon',
+        'GEOGRAPHY': 'Spatial data for geographic objects (PostgreSQL, SQL Server)',
+        'CIDR': 'IPv4 or IPv6 network',
+        'INET': 'IPv4 or IPv6 address',
+        'MACADDR': 'MAC address',
+        'JSON': 'JSON formatted text',
+        'JSONB': 'Binary JSON format (PostgreSQL)',
+        'XML': 'XML formatted text',
+        'XMLTYPE': 'XML data (Oracle)',
+        'UUID': 'Universally Unique Identifier',
+        'TSVECTOR': 'Full-text search vector (PostgreSQL)',
+        'TSQUERY': 'Full-text search query (PostgreSQL)',
+        'HSTORE': 'Key-value pairs (PostgreSQL)',
+        'SXML': 'Secure XML data type (DB2)',
+        'ROWID': 'Unique identifier for rows in a table (Oracle)',
+        'HIERARCHYID': 'Represents position in a hierarchy (SQL Server)',
+        'ARRAY': 'Array of values (PostgreSQL)',
+        'BIT VARYING': 'Variable-length bit string (PostgreSQL)',
+        'IMAGE': 'Used for storing images (SQL Server, deprecated)',
+        'TEXT': 'Non-Unicode large text (SQL Server, deprecated)'
     };
     
     exampleDiv.textContent = selectedOption.value ? `Example: ${dataTypeInfo[selectedOption.value]}` : '';
@@ -75,7 +191,7 @@ function showDataTypeExample(event) {
 // Function to toggle data type information visibility
 function toggleDataTypeInfo() {
     const dataTypeInfo = document.getElementById('data-type-info');
-    dataTypeInfo.style.display = dataTypeInfo.style.display === 'none' ? 'block' : 'none';
+    dataTypeInfo.style.display = 'block'; // Always open
 }
 
 // Add event listener for the "Add Table" button
@@ -105,6 +221,43 @@ function gatherDatabaseInfo() {
     });
     return JSON.stringify(tables);
 }
+
+// Function to handle JSON schema upload
+function handleSchemaUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const schema = JSON.parse(e.target.result);
+            populateFormFromSchema(schema);
+        };
+        reader.readAsText(file);
+    }
+}
+
+// Function to populate form from JSON schema
+function populateFormFromSchema(schema) {
+    const tablesContainer = document.getElementById('tables-container');
+    tablesContainer.innerHTML = ''; // Clear existing tables
+    schema.forEach(table => {
+        const tableElement = document.getElementById('table-template').content.cloneNode(true);
+        tableElement.querySelector('.table-name').value = table.name;
+        const columnsContainer = tableElement.querySelector('.columns-container');
+        table.columns.forEach(column => {
+            const columnElement = document.getElementById('column-template').content.cloneNode(true);
+            columnElement.querySelector('.column-name').value = column.name;
+            updateSQLDataTypes(columnElement.querySelector('.column-type'));
+            columnElement.querySelector('.column-type').value = column.type;
+            columnsContainer.appendChild(columnElement);
+        });
+        tableElement.querySelector('.add-column').addEventListener('click', addColumn);
+        tableElement.querySelector('.remove-table').addEventListener('click', removeTable);
+        tablesContainer.appendChild(tableElement);
+    });
+}
+
+// Add event listener for the JSON schema upload
+document.getElementById('schemaUpload').addEventListener('change', handleSchemaUpload);
 
 // Event listener for form submission
 document.getElementById('sqlForm').addEventListener('submit', async (e) => {
@@ -146,4 +299,5 @@ document.getElementById('sqlForm').addEventListener('submit', async (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     addTable();
     updateModelOptions();
+    toggleDataTypeInfo(); // Ensure data type info is always open
 });
