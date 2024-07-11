@@ -1,91 +1,125 @@
-# Text-to-SQL Converter
+# SQL Sorcer
 
-This project is a web application that converts natural language queries into SQL statements using AI. It supports both OpenAI's GPT and Anthropic's Claude APIs for text-to-SQL conversion.
+![GitHub](https://img.shields.io/github/license/ftchvs/sql-sorcer)
+![Node.js Version](https://img.shields.io/badge/node-%3E%3D12.0.0-brightgreen)
 
-## Features
+SQL Sorcer is an innovative web application that harnesses the power of AI to bridge the gap between natural language and SQL queries. By leveraging advanced language models from OpenAI and Anthropic, SQL Sorcer empowers users to generate accurate SQL statements from plain English descriptions, making database interactions more intuitive and accessible.
 
-- Convert natural language queries to SQL statements
-- Support for multiple database tables and columns
-- Choice between OpenAI and Claude APIs
-- Dynamic addition of tables in the user interface
-- Simple and intuitive web interface
-- Node.js backend for handling API requests securely
+## 🚀 Features
 
-## Prerequisites
+- 🧠 AI-Powered Conversion: Transform natural language queries into precise SQL statements
+- 🔄 Dual API Support: Choose between OpenAI's GPT and Anthropic's Claude for diverse AI capabilities
+- 📊 Multi-Table Support: Handle complex database schemas with multiple tables and relationships
+- 🔧 Dynamic Schema Input: Easily input and modify your database structure through the user interface
+- 💻 User-Friendly Interface: Intuitive web-based UI for seamless interaction
+- 🔒 Secure Backend: Node.js server ensuring safe handling of API requests and responses
+- 📚 Educational Tool: Learn SQL through natural language interactions
 
-Before you begin, ensure you have met the following requirements:
+## 🎯 Use Cases
 
-- Node.js (v12.0.0 or higher)
-- npm (usually comes with Node.js)
-- An OpenAI API key and/or Claude API key
+- 📊 Data Analysis: Quickly generate SQL queries for data exploration and reporting
+- 🎓 SQL Learning: Help students understand how natural language translates to SQL
+- 💼 Business Intelligence: Enable non-technical users to query databases using familiar language
+- 🧪 Prototyping: Rapidly prototype database queries for application development
+- 🔍 Database Exploration: Easily explore and understand new or complex database schemas
 
-## Installation
+## 📋 Prerequisites
+
+Before diving in, make sure you have:
+
+- [Node.js](https://nodejs.org/) (v12.0.0 or higher)
+- npm (comes bundled with Node.js)
+- An API key for OpenAI GPT and/or Anthropic Claude
+
+## 🛠️ Installation
 
 1. Clone the repository:
-   ```
-   git clone https://github.com/ftchvs/text-to-sql-converter.git
-   cd text-to-sql-converter
+   ```bash
+   git clone https://github.com/ftchvs/sql-sorcer.git
+   cd sql-sorcer
    ```
 
 2. Install the required dependencies:
-   ```
+   ```bash
    npm install
    ```
 
-3. Create a `.env` file in the root directory and add your API keys:
-   ```
+3. Set up your environment variables:
+   Create a `.env` file in the root directory and add your API keys:
+   ```plaintext
    OPENAI_API_KEY=your_openai_api_key_here
    CLAUDE_API_KEY=your_claude_api_key_here
    ```
 
-## Usage
+## 🖥️ Usage
 
-1. Start the server:
-   ```
+1. Launch the application:
+   ```bash
    node server.js
    ```
 
-2. Open a web browser and navigate to `http://localhost:3000`.
+2. Open your web browser and navigate to `http://localhost:3000`.
 
-3. In the web interface:
-   - Select the API type (OpenAI or Claude)
-   - Enter your database schema (table names and columns)
-   - Enter your natural language query
-   - Click "Convert to SQL" to generate the SQL statement
+3. Using the interface:
+   - Choose your preferred AI model (OpenAI or Claude)
+   - Input your database schema (tables and columns)
+   - Enter your query in natural language
+   - Click "Generate SQL" to receive the corresponding SQL statement
 
-## How It Works
+## 🔧 How It Works
 
-1. **Frontend**: The user interface is built with HTML, CSS, and JavaScript. It allows users to input database schema information, choose an API, and enter their natural language query.
+SQL Sorcer operates through a seamless process:
 
-2. **Backend**: A Node.js server handles the API requests. When a query is submitted:
-   - It receives the request from the frontend
-   - Formats the data appropriately for the chosen API
-   - Sends a request to either the OpenAI or Claude API
-   - Receives the generated SQL from the API
-   - Sends the result back to the frontend
+1. **User Input**: The user provides the database schema and a natural language query through the web interface.
 
-3. **AI Processing**: The AI model (either GPT or Claude) receives the context about the database schema and the natural language query. It then generates a SQL statement based on this information.
+2. **AI Processing**: The selected AI model (OpenAI or Claude) receives the schema and query, processing them to understand the user's intent.
 
-## Configuration
+3. **SQL Generation**: The AI generates a SQL statement that matches the user's request and the given database structure.
 
-You can modify the following in `server.js`:
+4. **Result Display**: The generated SQL is returned to the user, ready for use or further refinement.
 
-- `PORT`: The port on which the server runs (default is 3000)
-- AI model parameters: You can adjust parameters like `max_tokens` or `temperature` in the API calls
+## ⚙️ Configuration
 
-## Contributing
+Fine-tune SQL Sorcer by adjusting these parameters in `server.js`:
 
-Contributions to the Text-to-SQL Converter are welcome. Please feel free to submit a Pull Request.
+- `PORT`: The port on which the server runs (default: 3000)
+- AI model settings: Modify `max_tokens`, `temperature`, and other parameters to refine AI output
 
-## License
+## 📚 API Documentation
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+For in-depth information about the APIs powering SQL Sorcer, refer to the official documentation:
 
-## Acknowledgments
+- [OpenAI API Documentation](https://platform.openai.com/docs/api-reference)
+- [Anthropic Claude API Documentation](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
 
-- OpenAI for providing the GPT API
-- Anthropic for providing the Claude API
+## 🤝 Contributing
 
-## Disclaimer
+We welcome contributions to SQL Sorcer! Here's how you can help:
 
-This tool is for educational and developmental purposes only. Always review and validate the generated SQL before executing it on a real database.
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Submit a pull request
+
+Please review our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📄 License
+
+SQL Sorcer is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for full details.
+
+## 🙏 Acknowledgments
+
+- [OpenAI](https://openai.com/) for their groundbreaking GPT models
+- [Anthropic](https://www.anthropic.com/) for the innovative Claude AI
+- The open-source community for inspiration and tools
+
+## ⚠️ Disclaimer
+
+SQL Sorcer is designed for educational and development purposes. Always review and validate the generated SQL before executing it on production databases.
+
+## 📬 Contact
+
+For questions, suggestions, or discussions about SQL Sorcer, please open an issue on our [GitHub repository](https://github.com/ftchvs/sql-sorcer/issues).
+
+Happy querying with SQL Sorcer! 🧙‍♂️✨
