@@ -1,7 +1,11 @@
+# Creating the README.md file with the updated content
 
+updated_readme_content = """
 # SQL Sorcer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-v14.x-green.svg)](https://nodejs.org/)
+[![npm](https://img.shields.io/badge/npm-v6.x-red.svg)](https://www.npmjs.com/)
 
 SQL Sorcer is a powerful application designed to help users build SQL queries for creating audience targets. Whether you are an experienced SQL developer or a beginner, SQL Sorcer simplifies the process of managing events and generating precise audience targets.
 
@@ -32,15 +36,15 @@ SQL Sorcer is a powerful application designed to help users build SQL queries fo
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**:
    \`\`\`bash
    git clone https://github.com/ftchvs/sql-sorcer.git
    \`\`\`
-2. Navigate to the project directory:
+2. **Navigate to the project directory**:
    \`\`\`bash
    cd sql-sorcer
    \`\`\`
-3. Install dependencies:
+3. **Install dependencies**:
    \`\`\`bash
    npm install
    \`\`\`
@@ -115,7 +119,4 @@ Contributions are welcome! Please follow these steps:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or suggestions, feel free to open an issue or contact the project maintainers at [your-email@example.com].
+"""
