@@ -1,0 +1,91 @@
+# Text-to-SQL Converter
+
+This project is a web application that converts natural language queries into SQL statements using AI. It supports both OpenAI's GPT and Anthropic's Claude APIs for text-to-SQL conversion.
+
+## Features
+
+- Convert natural language queries to SQL statements
+- Support for multiple database tables and columns
+- Choice between OpenAI and Claude APIs
+- Dynamic addition of tables in the user interface
+- Simple and intuitive web interface
+- Node.js backend for handling API requests securely
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (v12.0.0 or higher)
+- npm (usually comes with Node.js)
+- An OpenAI API key and/or Claude API key
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/ftchvs/text-to-sql-converter.git
+   cd text-to-sql-converter
+   ```
+
+2. Install the required dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory and add your API keys:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   CLAUDE_API_KEY=your_claude_api_key_here
+   ```
+
+## Usage
+
+1. Start the server:
+   ```
+   node server.js
+   ```
+
+2. Open a web browser and navigate to `http://localhost:3000`.
+
+3. In the web interface:
+   - Select the API type (OpenAI or Claude)
+   - Enter your database schema (table names and columns)
+   - Enter your natural language query
+   - Click "Convert to SQL" to generate the SQL statement
+
+## How It Works
+
+1. **Frontend**: The user interface is built with HTML, CSS, and JavaScript. It allows users to input database schema information, choose an API, and enter their natural language query.
+
+2. **Backend**: A Node.js server handles the API requests. When a query is submitted:
+   - It receives the request from the frontend
+   - Formats the data appropriately for the chosen API
+   - Sends a request to either the OpenAI or Claude API
+   - Receives the generated SQL from the API
+   - Sends the result back to the frontend
+
+3. **AI Processing**: The AI model (either GPT or Claude) receives the context about the database schema and the natural language query. It then generates a SQL statement based on this information.
+
+## Configuration
+
+You can modify the following in `server.js`:
+
+- `PORT`: The port on which the server runs (default is 3000)
+- AI model parameters: You can adjust parameters like `max_tokens` or `temperature` in the API calls
+
+## Contributing
+
+Contributions to the Text-to-SQL Converter are welcome. Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
+
+- OpenAI for providing the GPT API
+- Anthropic for providing the Claude API
+
+## Disclaimer
+
+This tool is for educational and developmental purposes only. Always review and validate the generated SQL before executing it on a real database.
