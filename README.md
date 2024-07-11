@@ -27,7 +27,7 @@ Welcome to **text-sql**! This tool helps you convert natural language text into 
 
 ## 🖼️ Screenshot
 
-![Screenshot](public/view/Screenshot 2024-07-10 at 10.27.00 PM.png)
+![Screenshot](public/view/Screenshot%202024-07-10%20at%2010.27.00%20PM.png)
 
 ## 🛠️ Installation
 
