@@ -1,6 +1,3 @@
-# Creating the README.md file with the updated content
-
-updated_readme_content = """
 # SQL Sorcer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
