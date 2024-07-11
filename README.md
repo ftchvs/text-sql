@@ -1,10 +1,11 @@
-# SQL Sorcer
+
+# text-sql
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-v14.x-green.svg)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-v6.x-red.svg)](https://www.npmjs.com/)
 
-SQL Sorcer is a powerful application designed to help users build SQL queries for creating audience targets. Whether you are an experienced SQL developer or a beginner, SQL Sorcer simplifies the process of managing events and generating precise audience targets.
+Welcome to **text-sql**! This tool helps you convert natural language text into SQL queries effortlessly. Whether you're a SQL novice or a seasoned developer, text-sql streamlines the process of database querying.
 
 ## 🚀 Features
 
@@ -24,22 +25,32 @@ SQL Sorcer is a powerful application designed to help users build SQL queries fo
 - 🧪 **Prototyping**: Rapidly prototype database queries for application development.
 - 🔍 **Database Exploration**: Easily explore and understand new or complex database schemas.
 
-## Getting Started
+## 📽️ Demo
+
+[![Video Demo](public/view/REC-20240710222331.mp4)](public/view/REC-20240710222331.mp4)
+
+Click the image above to watch a video demo of text-sql in action.
+
+## 🖼️ Screenshot
+
+![Screenshot](public/view/screenshot.png)
+
+## 🛠️ Installation
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (version 14.x or higher)
 - [npm](https://www.npmjs.com/) (version 6.x or higher)
 
-### Installation
+### Steps
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/ftchvs/sql-sorcer.git
+   git clone https://github.com/ftchvs/text-sql.git
    ```
 2. **Navigate to the project directory**:
    ```bash
-   cd sql-sorcer
+   cd text-sql
    ```
 3. **Install dependencies**:
    ```bash
@@ -53,17 +64,17 @@ To start the application, run:
 npm start
 ```
 
-The application will be available at \`http://localhost:3000\`.
+The application will be available at `http://localhost:3000`.
 
-## Usage
+## 📚 Usage
 
-1. **Track Events**: Add and manage events within your database.
-2. **Build SQL Queries**: Use the SQL Sorcer interface to build complex SQL queries for creating audience targets.
-3. **Generate Audience Targets**: Run the generated SQL queries to create precise audience targets based on your event data.
+1. **Enter your query**: Type a natural language query in the input box.
+2. **Convert to SQL**: Click the "Convert" button to generate the SQL query.
+3. **Copy the SQL**: Copy the generated SQL query for use in your database management system.
 
-## API Documentation
+## 🔄 API Documentation
 
-### Endpoint: /api/convert
+### Endpoint: `/api/convert`
 - **Method**: POST
 - **Description**: Converts natural language to SQL.
 - **Request**:
@@ -79,22 +90,22 @@ The application will be available at \`http://localhost:3000\`.
   }
   ```
 
-## FAQ
+## ❓ FAQ
 
 **Q1: How do I add a new event?**
 
 A1: Navigate to the 'Events' section and click on 'Add Event'. Fill in the required details and click 'Save'.
 
-**Q2: Can I use SQL Sorcer with any database?**
+**Q2: Can I use text-sql with any database?**
 
-A2: Yes, SQL Sorcer supports multiple database types. Ensure your database schema is correctly inputted in the 'Schema' section.
+A2: Yes, text-sql supports multiple database types. Ensure your database schema is correctly inputted in the 'Schema' section.
 
-## Changelog
+## 📜 Changelog
 
 ### v1.0.0
 - Initial release with AI-powered SQL conversion, multi-table support, and dynamic schema input.
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -113,7 +124,10 @@ Contributions are welcome! Please follow these steps:
    ```
 5. Open a pull request.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-"""
+
+## 📬 Contact
+
+For any inquiries or support, please contact [ftchvs](https://github.com/ftchvs).
