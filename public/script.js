@@ -121,6 +121,7 @@ document.getElementById('sqlForm').addEventListener('submit', async (e) => {
     resultDiv.innerHTML = 'Converting...';
     
     try {
+        console.log('Sending request:', { apiType, apiKey, modelType, maxTokens, dbInfo, textQuery });
         const response = await fetch('/convert', {
             method: 'POST',
             headers: {

@@ -55,6 +55,7 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
 input[type="number"] {
@@ -99,10 +100,19 @@ textarea {
 
 .column-info {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr auto;
     gap: 10px;
     margin-bottom: 10px;
     align-items: center;
+}
+
+.column-info input,
+.column-info select {
+    margin-bottom: 0;
+}
+
+.column-info .remove-column {
+    margin-left: 10px;
 }
 
 /* Buttons */
@@ -199,6 +209,7 @@ button:hover {
     -webkit-appearance: none;
     -moz-appearance: none;
     padding-right: 30px; /* Space for custom arrow */
+    box-sizing: border-box;
 }
 
 /* Responsive design */

@@ -17,40 +17,44 @@ app.get('/', (req, res) => {
 
 app.post('/convert', async (req, res) => {
     const { apiType, apiKey, modelType, maxTokens, dbInfo, textQuery } = req.body;
+    console.log('Received request:', { apiType, apiKey, modelType, maxTokens, dbInfo, textQuery });
+
     let apiUrl, requestData;
 
-    // Parse dbInfo from JSON string to object
-    const parsedDbInfo = JSON.parse(dbInfo);
-
-    // Format database info for the AI prompt
-    const formattedDbInfo = parsedDbInfo.map(table => 
-        `Table: ${table.name}\nColumns: ${table.columns.map(col => `${col.name} (${col.type})`).join(', ')}`
-    ).join('\n\n');
-
-    if (apiType === 'openai') {
-        apiUrl = 'https://api.openai.com/v1/chat/completions';
-        requestData = {
-            model: modelType,
-            messages: [
-                { role: "system", content: `You are a SQL expert. Convert the following text to a SQL query. Use the provided database information:\n\n${formattedDbInfo}` },
-                { role: "user", content: textQuery }
-            ],
-            max_tokens: parseInt(maxTokens)
-        };
-    } else if (apiType === 'claude') {
-        apiUrl = 'https://api.anthropic.com/v1/messages';
-        requestData = {
-            model: modelType,
-            max_tokens: parseInt(maxTokens),
-            messages: [
-                { role: "human", content: `You are a SQL expert. Convert the following text to a SQL query. Use the provided database information:\n\n${formattedDbInfo}\n\nText to convert: ${textQuery}` }
-            ]
-        };
-    } else {
-        return res.status(400).json({ error: 'Invalid API type' });
-    }
-
     try {
+        // Parse dbInfo from JSON string to object
+        const parsedDbInfo = JSON.parse(dbInfo);
+
+        // Format database info for the AI prompt
+        const formattedDbInfo = parsedDbInfo.map(table => 
+            `Table: ${table.name}\nColumns: ${table.columns.map(col => `${col.name} (${col.type})`).join(', ')}`
+        ).join('\n\n');
+
+        if (apiType === 'openai') {
+            apiUrl = 'https://api.openai.com/v1/chat/completions';
+            requestData = {
+                model: modelType,
+                messages: [
+                    { role: "system", content: `You are a SQL expert. Convert the following text to a SQL query. Use the provided database information:\n\n${formattedDbInfo}` },
+                    { role: "user", content: textQuery }
+                ],
+                max_tokens: parseInt(maxTokens)
+            };
+        } else if (apiType === 'claude') {
+            apiUrl = 'https://api.anthropic.com/v1/messages';
+            requestData = {
+                model: modelType,
+                max_tokens: parseInt(maxTokens),
+                messages: [
+                    { role: "human", content: `You are a SQL expert. Convert the following text to a SQL query. Use the provided database information:\n\n${formattedDbInfo}\n\nText to convert: ${textQuery}` }
+                ]
+            };
+        } else {
+            return res.status(400).json({ error: 'Invalid API type' });
+        }
+
+        console.log('Sending request to API:', apiUrl, requestData);
+
         const response = await axios.post(apiUrl, requestData, {
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
@@ -66,6 +70,7 @@ app.post('/convert', async (req, res) => {
             sqlQuery = response.data.content[0].text;
         }
 
+        console.log('API response:', sqlQuery);
         res.json({ sqlQuery });
     } catch (error) {
         console.error('API Error:', error.response?.data || error.message);
