@@ -37,24 +37,24 @@ SQL Sorcer is a powerful application designed to help users build SQL queries fo
 ### Installation
 
 1. **Clone the repository**:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/ftchvs/sql-sorcer.git
-   \`\`\`
+   ```
 2. **Navigate to the project directory**:
-   \`\`\`bash
+   ```bash
    cd sql-sorcer
-   \`\`\`
+   ```
 3. **Install dependencies**:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 ### Running the Application
 
 To start the application, run:
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 The application will be available at \`http://localhost:3000\`.
 
@@ -70,17 +70,17 @@ The application will be available at \`http://localhost:3000\`.
 - **Method**: POST
 - **Description**: Converts natural language to SQL.
 - **Request**:
-  \`\`\`json
+  ```json
   {
     "query": "Show me all users who signed up in the last month."
   }
-  \`\`\`
+  ```
 - **Response**:
-  \`\`\`json
+  ```json
   {
     "sql": "SELECT * FROM users WHERE signup_date >= NOW() - INTERVAL 1 MONTH;"
   }
-  \`\`\`
+  ```
 
 ## FAQ
 
@@ -103,17 +103,17 @@ Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch:
-   \`\`\`bash
+   ```bash
    git checkout -b feature/your-feature-name
-   \`\`\`
+   ```
 3. Make your changes and commit them:
-   \`\`\`bash
+   ```bash
    git commit -m 'Add some feature'
-   \`\`\`
+   ```
 4. Push to the branch:
-   \`\`\`bash
+   ```bash
    git push origin feature/your-feature-name
-   \`\`\`
+   ```
 5. Open a pull request.
 
 ## License
